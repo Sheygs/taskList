@@ -32,7 +32,6 @@ const addTask = e => {
     );
    appendChild(li,a);
    appendChild(taskList,li);
-   //console.log(typeof li.textContent);
    clearInput();
    e.preventDefault();
 }
