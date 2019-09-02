@@ -49,6 +49,32 @@ const setTaskValueInLocalStorage = task => {
   localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
+const getTasks = () => {
+  let tasks;
+  if (!localStorage.getItem('tasks')){
+    tasks = [];
+  }
+  else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  } 
+  tasks.forEach(task => {
+    const li = createElement('li');
+    setClassName(li,'list-group-item');
+    appendChild(li,createTextNode(task));
+    const a = createElement('a');
+    setClassName(a,'delete-item float-right')
+    setAttribute(a,'href','#');
+    innerHTML(
+       a,
+       ` 
+        <i class="fas fa-times text-danger"></i>
+       `
+      );
+     appendChild(li,a);
+     appendChild(taskList,li);
+  })
+}
+
 const filterTask = e => {
     const text = e.target.value.toLowerCase();
     document.querySelectorAll('.list-group-item').forEach(task => {
@@ -77,6 +103,7 @@ const clearInput = () => inputField.value = '';
 
 
 const loadEventListeners = () => {
+  document.addEventListener('DOMContentLoaded',getTasks);
   form.addEventListener('submit', addTask);
   taskList.addEventListener('click',removeTask);
   clearButton.addEventListener('click', clearTasks);
