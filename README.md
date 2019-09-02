@@ -1,3 +1,3 @@
 # taskList
 
-A simple to-dos app :book:
+A simple to-dos app :pencil:
