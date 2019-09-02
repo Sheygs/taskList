@@ -87,9 +87,28 @@ const removeTask = e => {
   if (e.target.parentElement.classList.contains('delete-item')){
      if (confirm('Are you sure ?')){
       //taskList.removeChild(e.target.parentElement.parentElement);
-      e.target.parentElement.parentElement.remove();
+      const parentElement = e.target.parentElement.parentElement;
+      parentElement.remove();
+      removeTaskInLocalStorage(parentElement);
      }
   }
+}
+
+//to treat
+const removeTaskInLocalStorage = taskItem => {
+  let tasks;
+  if (!localStorage.getItem('tasks')){
+    tasks = [];
+  }
+  else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.forEach((task,index) => {
+    if (taskItem.textContent === task){
+      tasks.splice(index,1);
+    }
+  });
+  localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
 const clearTasks = () => {
