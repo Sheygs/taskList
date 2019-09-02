@@ -55,9 +55,7 @@ const removeTask = e => {
 }
 
 const clearTasks = () => {
-  //Option: 1
   //taskList.innerHTML = '';
-  //Option: 2
   while(taskList.firstChild){
     taskList.removeChild(taskList.firstChild);
   }
