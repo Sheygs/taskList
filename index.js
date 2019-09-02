@@ -32,8 +32,21 @@ const addTask = e => {
     );
    appendChild(li,a);
    appendChild(taskList,li);
+   setTaskValueInLocalStorage(value);
    clearInput();
    e.preventDefault();
+}
+
+const setTaskValueInLocalStorage = task => {
+  let tasks;
+  if (!localStorage.getItem('tasks')){
+    tasks = [];
+  }
+  else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.push(task);
+  localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
 const filterTask = e => {
