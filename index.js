@@ -5,7 +5,7 @@ const searchField = document.querySelector('#search');
 const taskList = document.querySelector('.list-group');
 const clearButton = document.querySelector('.clear-tasks');
 
-
+//Helper Methods
 const createElement = HTMLElement => document.createElement(HTMLElement);
 const setClassName = (HTMLElement,className) => HTMLElement.className = className;
 const createTextNode = text => document.createTextNode(text);
