@@ -93,8 +93,7 @@ const removeTask = e => {
       const parentElement = e.target.parentElement.parentElement;
       parentElement.remove();
       removeTaskInLocalStorage(parentElement);
-     }
-    
+     } 
   }
 }
 
