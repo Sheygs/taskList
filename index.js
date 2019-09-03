@@ -85,6 +85,19 @@ const filterTask = e => {
     })
 }
 
+
+const removeTask = e => {
+  if (e.target.parentElement.classList.contains('delete-item')){
+     if (confirm('Are you sure ?')){
+      //taskList.removeChild(e.target.parentElement.parentElement);
+      const parentElement = e.target.parentElement.parentElement;
+      parentElement.remove();
+      removeTaskInLocalStorage(parentElement);
+     }
+    
+  }
+}
+
 //to treat
 const removeTaskInLocalStorage = taskItem => {
   let tasks;
@@ -101,20 +114,6 @@ const removeTaskInLocalStorage = taskItem => {
   });
   localStorage.setItem('tasks',JSON.stringify(tasks));
 }
-
-
-const removeTask = e => {
-  if (e.target.parentElement.classList.contains('delete-item')){
-     if (confirm('Are you sure ?')){
-      //taskList.removeChild(e.target.parentElement.parentElement);
-      const parentElement = e.target.parentElement.parentElement;
-      parentElement.remove();
-      removeTaskInLocalStorage(parentElement);
-     }
-    
-  }
-}
-
 
 const clearTasks = () => {
   //taskList.innerHTML = '';
