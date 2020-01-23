@@ -18,23 +18,20 @@ const addTask = e => {
   if (value === ''){
     alert('Input value required!')
   }
-  const li = createElement('li');
-  setClassName(li,'list-group-item');
-  appendChild(li,createTextNode(value));
-  const a = createElement('a');
-  setClassName(a,'delete-item float-right')
-  setAttribute(a,'href','#');
-  innerHTML(
-     a,
-     ` 
-      <i class="fas fa-times text-danger"></i>
-     `
-    );
-   appendChild(li,a);
-   appendChild(taskList,li);
-   setTaskValueInLocalStorage(value);
-   clearInput();
-   e.preventDefault();
+  else {
+      const li = createElement('li');
+      setClassName(li,'list-group-item');
+      appendChild(li,createTextNode(value));
+      const a = createElement('a');
+      setClassName(a,'delete-item float-right')
+      setAttribute(a,'href','#');
+      innerHTML( a, `<i class="fas fa-times text-danger"></i> `);
+      appendChild(li,a);
+      appendChild(taskList,li);
+      setTaskValueInLocalStorage(value);
+      clearInput();
+      e.preventDefault();
+  }
 }
 
 
@@ -85,18 +82,6 @@ const filterTask = e => {
     })
 }
 
-
-const removeTask = e => {
-  if (e.target.parentElement.classList.contains('delete-item')){
-     if (confirm('Are you sure ?')){
-      //taskList.removeChild(e.target.parentElement.parentElement);
-      const parentElement = e.target.parentElement.parentElement;
-      parentElement.remove();
-      removeTaskInLocalStorage(parentElement);
-     } 
-  }
-}
-
 //to treat
 const removeTaskInLocalStorage = taskItem => {
   let tasks;
@@ -114,6 +99,19 @@ const removeTaskInLocalStorage = taskItem => {
   localStorage.setItem('tasks',JSON.stringify(tasks));
 }
 
+const removeTask = e => {
+  if (e.target.parentElement.classList.contains('delete-item')){
+     if (confirm('Are you sure ?')){
+      //taskList.removeChild(e.target.parentElement.parentElement);
+      const parentElement = e.target.parentElement.parentElement;
+      parentElement.remove();
+      removeTaskInLocalStorage(parentElement);
+     } 
+  }
+}
+
+const clearTaskInLocalStorage = () => localStorage.clear();
+
 const clearTasks = () => {
   //taskList.innerHTML = '';
   while(taskList.firstChild){
@@ -122,10 +120,7 @@ const clearTasks = () => {
   clearTaskInLocalStorage();
 } 
 
-const clearTaskInLocalStorage = () => localStorage.clear();
-
 const clearInput = () => inputField.value = '';
-
 
 const loadEventListeners = () => {
   document.addEventListener('DOMContentLoaded',getTasks);
