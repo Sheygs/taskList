@@ -13,10 +13,20 @@ const appendChild = (HTMLElement,child) => HTMLElement.appendChild(child);
 const setAttribute = (HTMLElement,attrName,attrValue) => HTMLElement.setAttribute(attrName,attrValue);
 const innerHTML = (HTMLElement,string) => HTMLElement.innerHTML = string;
 
+
+const alertMessage = (msg, className, timeout) => {
+  const div = document.createElement('div');
+  div.className = `${className}`;
+  div.appendChild(document.createTextNode(msg));
+  const card = document.querySelector('#main');
+  card.insertAdjacentElement('beforebegin',div);
+  setTimeout(() => document.querySelector(`.${className}`).remove(), timeout);
+};
+
 const addTask = e => {
   const value = inputField.value;
   if (value === ''){
-    alert('Input value required!')
+    alertMessage('Input Field Required 😑', 'error', 2000);
   }
   else {
       const li = createElement('li');
@@ -33,7 +43,6 @@ const addTask = e => {
       e.preventDefault();
   }
 }
-
 
 const setTaskValueInLocalStorage = task => {
   let tasks;
@@ -101,12 +110,11 @@ const removeTaskInLocalStorage = taskItem => {
 
 const removeTask = e => {
   if (e.target.parentElement.classList.contains('delete-item')){
-     if (confirm('Are you sure ?')){
       //taskList.removeChild(e.target.parentElement.parentElement);
       const parentElement = e.target.parentElement.parentElement;
       parentElement.remove();
       removeTaskInLocalStorage(parentElement);
-     } 
+      alertMessage(`Item removed 🎉`, 'success', 2000);
   }
 }
 
