@@ -1,2 +1,4 @@
-## task-list
-> A simple to-dos app :pencil:
+### DOM Manipulation
+
+- Guess Game
+- Task Manager

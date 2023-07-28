@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <link rel="stylesheet" type="text/css" href="./index.css" />
+                <title>Number Guesser</title>
+        </head>
+        <body>
+                <main>
+                        <div class="container">
+                                <h1 class="main_heading">Number Guesser</h1>
+                                <div class="game">
+                                        <p class="inform">
+                                                Guess a number between
+                                                <span class="min_num"></span> and
+                                                <span class="max_num"></span>
+                                        </p>
+                                        <input
+                                                type="number"
+                                                class="guess_input"
+                                                id="number"
+                                                placeholder="enter your guess"
+                                        />
+                                        <input type="button" class="guess_btn" value="Submit" />
+                                </div>
+                                <p class="message"></p>
+                        </div>
+                </main>
+                <script src="./index.js"></script>
+        </body>
+</html>
