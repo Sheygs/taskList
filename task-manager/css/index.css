@@ -1,0 +1,21 @@
+label {
+  font-size: 0.8rem;
+}
+
+.success {
+  color: #008000;
+  background: #7cfc00;
+}
+
+.error {
+  background: #f5c1c1;
+  color: #f51515;
+}
+
+.success,
+.error {
+  text-align: center;
+  padding: 10px 20px;
+  margin: 10px auto;
+  width: 80%;
+}
