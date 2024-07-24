@@ -64,6 +64,17 @@ function showResults(userOption = '') {
   }
 }
 
+function resetGame() {
+  computerScore = 0;
+  playerScore = 0;
+  playerScoreEl.innerText = 0;
+  computerScoreEl.innerText = 0;
+  roundResultsMsg.textContent = '';
+  winnerMsgElement.textContent = '';
+  resetGameButton.style.display = 'none';
+  optionsContainer.style.display = 'block';
+}
+
 rockButton.addEventListener('click', function () {
   showResults('Rock');
 });
@@ -76,13 +87,4 @@ scissorsButton.addEventListener('click', function () {
   showResults('Scissors');
 });
 
-resetGameButton.addEventListener('click', function () {
-  computerScore = 0;
-  playerScore = 0;
-  playerScoreEl.innerText = 0;
-  computerScoreEl.innerText = 0;
-  roundResultsMsg.textContent = '';
-  winnerMsgElement.textContent = '';
-  resetGameButton.style.display = 'none';
-  optionsContainer.style.display = 'block';
-});
+resetGameButton.addEventListener('click', resetGame);
