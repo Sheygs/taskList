@@ -14,4 +14,14 @@ function getRandomComputerResult() {
   return availableOptions[randomNumber];
 }
 
-export { options, getRandomComputerResult };
+function hasPlayerWonTheRound(player = '', computer = '') {
+  const { ROCK, SCISSORS, PAPER } = options;
+
+  return (
+    (player === ROCK && computer === SCISSORS) ||
+    (player === SCISSORS && computer === PAPER) ||
+    (player === PAPER && computer === ROCK)
+  );
+}
+
+export { getRandomComputerResult, hasPlayerWonTheRound };

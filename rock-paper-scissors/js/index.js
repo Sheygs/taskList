@@ -1,4 +1,4 @@
-import { options, getRandomComputerResult } from './utils.js';
+import { getRandomComputerResult, hasPlayerWonTheRound } from './utils.js';
 
 const playerScoreEl = document.getElementById('player-score');
 const computerScoreEl = document.getElementById('computer-score');
@@ -14,16 +14,6 @@ const optionsContainer = document.querySelector('.options-container');
 
 let playerScore = 0;
 let computerScore = 0;
-
-function hasPlayerWonTheRound(player = '', computer = '') {
-  const { ROCK, SCISSORS, PAPER } = options;
-
-  return (
-    (player === ROCK && computer === SCISSORS) ||
-    (player === SCISSORS && computer === PAPER) ||
-    (player === PAPER && computer === ROCK)
-  );
-}
 
 function getRoundResults(userOption = '') {
   let result = '';
