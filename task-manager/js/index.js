@@ -1,4 +1,4 @@
-// Define UI Variables
+// UI Variables
 const form = document.querySelector('form');
 const inputField = document.querySelector('#task');
 const searchField = document.querySelector('#search');
@@ -14,7 +14,7 @@ const setAttribute = (HTMLElement, attrName, attrValue) =>
   HTMLElement.setAttribute(attrName, attrValue);
 const innerHTML = (HTMLElement, string) => (HTMLElement.innerHTML = string);
 
-const alertMessage = (msg, className, timeout) => {
+const alertMessage = (msg = '', className = '', timeout = 3000) => {
   const div = document.createElement('div');
   div.className = `${className}`;
   div.appendChild(document.createTextNode(msg));
@@ -25,8 +25,8 @@ const alertMessage = (msg, className, timeout) => {
 
 const addTask = (e) => {
   const value = inputField.value;
-  if (value === '') {
-    alertMessage('Input Field Required 😑', 'error', 2000);
+  if (!value) {
+    alertMessage('Input field required 😑', 'error', 2000);
   } else {
     const li = createElement('li');
     setClassName(li, 'list-group-item');
@@ -43,8 +43,8 @@ const addTask = (e) => {
   }
 };
 
-const setTaskValueInLocalStorage = (task) => {
-  let tasks;
+const setTaskValueInLocalStorage = (task = '') => {
+  let tasks = null;
 
   if (!localStorage.getItem('tasks')) {
     tasks = [];
@@ -58,7 +58,7 @@ const setTaskValueInLocalStorage = (task) => {
 };
 
 const getTasks = () => {
-  let tasks;
+  let tasks = null;
 
   if (!localStorage.getItem('tasks')) {
     tasks = [];
@@ -93,19 +93,21 @@ const filterTask = (e) => {
   });
 };
 
-// TODO
 const removeTaskInLocalStorage = (taskItem) => {
-  let tasks;
+  let tasks = null;
+
   if (!localStorage.getItem('tasks')) {
     tasks = [];
   } else {
     tasks = JSON.parse(localStorage.getItem('tasks'));
   }
+
   tasks.forEach((task, index) => {
     if (taskItem.textContent === task) {
       tasks.splice(index, 1);
     }
   });
+
   localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
@@ -115,17 +117,18 @@ const removeTask = (e) => {
     const parentElement = e.target.parentElement.parentElement;
     parentElement.remove();
     removeTaskInLocalStorage(parentElement);
-    alertMessage(`Item removed 🎉`, 'success', 2000);
+    alertMessage(`item removed 🎉`, 'success', 2000);
   }
 };
 
 const clearTaskInLocalStorage = () => localStorage.clear();
 
 const clearTasks = () => {
-  //taskList.innerHTML = '';
+  // taskList.innerHTML = '';
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+
   clearTaskInLocalStorage();
 };
 

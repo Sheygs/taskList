@@ -1,3 +1,5 @@
+// import { weapons, monsters } from './mock/data.js';
+
 let xp = 0;
 let health = 100;
 let gold = 250;
@@ -18,9 +20,8 @@ const monsterName = document.querySelector('#monsterName');
 const monsterHealthText = document.querySelector('#monsterHealth');
 
 button1.onclick = goStore;
-// button1.addEventListener('click', goStore);
 button2.onclick = goCave;
-button3.onclick = fightDragon;
+button3.addEventListener('click', fightDragon);
 
 const weapons = [
   { name: 'stick', power: 5 },
@@ -194,8 +195,6 @@ function defeatMonster() {
   xpText.innerText = xp;
   update(locations[4]);
 }
-
-function lose() {}
 
 function buyHealth() {
   if (gold >= 10) {
