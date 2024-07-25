@@ -12,9 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <title>
-      Learn Basic String and Array Methods by Building a Music Player App
-    </title>
+    <title>Learn Basic String & Array Methods by Building a Music Player App</title>
   </head>
 
   <body>
@@ -26,11 +24,13 @@
             <div></div>
           </div>
           <h1 class="fcc-title">freeCodeCamp</h1>
+
           <div class="parallel-lines">
             <div></div>
             <div></div>
           </div>
         </div>
+
         <div class="player-content">
           <div id="player-album-art">
             <img
@@ -44,7 +44,12 @@
               <p id="player-song-artist"></p>
             </div>
             <div class="player-buttons">
-              <button id="previous" class="previous" aria-label="Previous">
+              <button
+                type="button"
+                id="previous"
+                class="previous"
+                aria-label="Previous"
+              >
                 <svg
                   width="24"
                   height="19"
@@ -60,7 +65,7 @@
                   />
                 </svg>
               </button>
-              <button id="play" class="play" aria-label="Play">
+              <button type="button" id="play" class="play" aria-label="Play">
                 <svg
                   width="17"
                   height="19"
@@ -71,7 +76,7 @@
                   <path d="M0 0L16.1852 9.5L1.88952e-07 19L0 0Z" />
                 </svg>
               </button>
-              <button id="pause" class="pause" aria-label="Pause">
+              <button type="button" id="pause" class="pause" aria-label="Pause">
                 <svg
                   width="17"
                   height="19"
@@ -119,6 +124,7 @@
           </div>
         </div>
       </div>
+
       <div class="playlist">
         <div class="playlist-bar">
           <div class="parallel-lines">
@@ -134,6 +140,6 @@
         <ul id="playlist-songs"></ul>
       </div>
     </div>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
