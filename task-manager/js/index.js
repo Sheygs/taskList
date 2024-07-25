@@ -1,18 +1,18 @@
-// UI Variables
+import {
+  createElement,
+  setClassName,
+  createTextNode,
+  appendChild,
+  setAttribute,
+  innerHTML,
+  clearTaskInLocalStorage,
+} from './utils.js';
+
 const form = document.querySelector('form');
 const inputField = document.querySelector('#task');
 const searchField = document.querySelector('#search');
 const taskList = document.querySelector('.list-group');
 const clearButton = document.querySelector('.clear-tasks');
-
-// Helper Methods
-const createElement = (HTMLElement) => document.createElement(HTMLElement);
-const setClassName = (HTMLElement, className) => (HTMLElement.className = className);
-const createTextNode = (text) => document.createTextNode(text);
-const appendChild = (HTMLElement, child) => HTMLElement.appendChild(child);
-const setAttribute = (HTMLElement, attrName, attrValue) =>
-  HTMLElement.setAttribute(attrName, attrValue);
-const innerHTML = (HTMLElement, string) => (HTMLElement.innerHTML = string);
 
 const alertMessage = (msg = '', className = '', timeout = 3000) => {
   const div = document.createElement('div');
@@ -120,8 +120,6 @@ const removeTask = (e) => {
     alertMessage(`item removed 🎉`, 'success', 2000);
   }
 };
-
-const clearTaskInLocalStorage = () => localStorage.clear();
 
 const clearTasks = () => {
   // taskList.innerHTML = '';
