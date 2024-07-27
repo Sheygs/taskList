@@ -1,4 +1,4 @@
-const songs = [
+const allSongs = [
   {
     id: 0,
     title: 'Scratching The Surface',
@@ -71,4 +71,4 @@ const songs = [
   },
 ];
 
-export { songs };
+export { allSongs };

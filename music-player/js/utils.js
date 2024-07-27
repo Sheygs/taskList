@@ -1,7 +1,7 @@
 const handleMap = ({ id, title, artist, duration }) => {
   return `
       <li id="song-${id}" class="playlist-song">
-         <button class="playlist-song-info">
+         <button class="playlist-song-info" onclick="">
             <span class="playlist-song-title">${title}</span>
             <span class="playlist-song-artist">${artist}</span>
             <span class="playlist-song-duration">${duration}</span>
@@ -13,4 +13,18 @@ const handleMap = ({ id, title, artist, duration }) => {
    `;
 };
 
-export { handleMap };
+const sortSongs = (songs = []) => {
+  return songs?.sort((a, b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+
+    if (a.title > b.title) {
+      return 1;
+    }
+
+    return 0;
+  });
+};
+
+export { handleMap, sortSongs };
