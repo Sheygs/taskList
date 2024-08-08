@@ -14,14 +14,13 @@ const deleteButton = (title = '') =>
    </button>
   `;
 
-const handleMap = ({ id, title, artist, duration }) => {
-  return `
+const handleMap = ({ id, title, artist, duration }) =>
+  `
       <li id="song-${id}" class="playlist-song">
         ${playButton({ title, artist, duration })}
         ${deleteButton(title)}
       </li>
    `;
-};
 
 const sortSongs = (songs = []) => {
   return songs?.sort((a, b) => {
