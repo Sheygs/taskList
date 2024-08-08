@@ -1,4 +1,4 @@
-import { allSongs } from './data/songs.js';
+import { _songs } from './data/songs.js';
 import { sortSongs, handleMap } from './utils.js';
 
 const playButton = document.querySelector('#play');
@@ -15,8 +15,8 @@ const audio = new Audio();
 // create a copy of the original `songs`
 // array without mutating the original
 
-let userData = {
-  songs: [...allSongs],
+const userData = {
+  songs: [..._songs],
   currentSong: null,
   songCurrentTime: 0,
 };
