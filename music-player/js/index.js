@@ -49,12 +49,12 @@ const renderSongs = (songs = []) => {
   const songsHTML = songs.map(handleMap).join('');
   playlistSongs.innerHTML = songsHTML;
 
-  document.querySelectorAll('.playlist-song-info').forEach((button) => {
-    button.addEventListener('click', function (e) {
-      const songId = e.currentTarget.dataset.id;
-      playSong(songId);
-    });
-  });
+  // document.querySelectorAll('.playlist-song-info').forEach((button) => {
+  //   button.addEventListener('click', function (e) {
+  //     const songId = e.currentTarget.dataset.id;
+  //     playSong(songId);
+  //   });
+  // });
 };
 
 playButton.addEventListener('click', () => {
@@ -63,7 +63,7 @@ playButton.addEventListener('click', () => {
   } else {
     playSong(userData?.currentSong.id);
   }
-  console.log(userData);
+  console.log({ userData });
 });
 
 renderSongs(sorted);
