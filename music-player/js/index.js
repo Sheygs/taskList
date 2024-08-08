@@ -24,29 +24,32 @@ let userData = {
 const sorted = sortSongs(userData?.songs);
 
 const playSong = (songId = '') => {
-  console.log({ songId });
   const song = sorted?.find(({ id }) => id === songId);
 
-  if (!song) return; // not reach here though
+  // very unlikely
+  if (!song) return;
 
   audio.src = song.src;
   audio.title = song.title;
 
-  // before playing a song, we need to make sure it starts from the beginning
+  // before a song is played, we need to make sure it starts from the beginning
   if (!userData.currentSong || userData?.currentSong.id !== song.id) {
     audio.currentTime = 0;
   } else {
     audio.currentTime = userData.songCurrentTime;
   }
+
   userData.currentSong = song;
   playButton.classList.add('playing');
-  audio.play();
+  audio.play().catch((error) => {
+    console.error('playback failed:', error);
+  });
 };
 
 const handleMap = ({ id, title, artist, duration }) => {
   return `
       <li id="song-${id}" class="playlist-song">
-         <button class="playlist-song-info" onclick="${playSong(id)}">
+         <button class="playlist-song-info" data-id="${id}">
             <span class="playlist-song-title">${title}</span>
             <span class="playlist-song-artist">${artist}</span>
             <span class="playlist-song-duration">${duration}</span>
@@ -61,6 +64,13 @@ const handleMap = ({ id, title, artist, duration }) => {
 const renderSongs = (songs = []) => {
   const songsHTML = songs.map(handleMap).join('');
   playlistSongs.innerHTML = songsHTML;
+
+  document.querySelectorAll('.playlist-song-info').forEach((button) => {
+    button.addEventListener('click', function (e) {
+      const songId = e.currentTarget.dataset.id;
+      playSong(songId);
+    });
+  });
 };
 
 playButton.addEventListener('click', () => {
@@ -69,6 +79,7 @@ playButton.addEventListener('click', () => {
   } else {
     playSong(userData?.currentSong.id);
   }
+  console.log(userData);
 });
 
 renderSongs(sorted);
